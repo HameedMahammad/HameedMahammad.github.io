@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Electronics & Embedded Systems</title>
+    <style>
+        /* CSS Variables for a "Silicon & Solder" Dark Theme */
+        :root {
+            --bg-base: #0a0a0c;
+            --bg-surface: #15161a;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --accent-glow: #00ffcc; /* Neon cyan/green trace color */
+            --trace-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            line-height: 1.6;
+            background-image: 
+                linear-gradient(var(--trace-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--trace-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: -1px -1px;
+        }
+
+        /* Overlay to fade out the grid slightly */
+        .overlay {
+            background: radial-gradient(circle at center, transparent 0%, var(--bg-base) 80%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header, section {
+            width: 100%;
+            max-width: 900px;
+            padding: 2rem;
+            margin: 1rem auto;
+            background-color: rgba(21, 22, 26, 0.95);
+            border: 1px solid var(--trace-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        header {
+            text-align: center;
+            border-top: 4px solid var(--accent-glow);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--accent-glow);
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--trace-color);
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .subtitle {
+            color: var(--accent-glow);
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent-glow);
+            text-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-chip {
+            background-color: var(--bg-base);
+            border: 1px solid var(--trace-color);
+            padding: 0.75rem;
+            text-align: center;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .skill-chip:hover {
+            border-color: var(--accent-glow);
+            box-shadow: inset 0 0 10px rgba(0, 255, 204, 0.2);
+            color: var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        /* Project Cards */
+        .project {
+            margin-bottom: 2rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--trace-color);
+            transition: border-color 0.3s ease;
+        }
+
+        .project:hover {
+            border-left-color: var(--accent-glow);
+        }
+
+        .project h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .project-meta {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+            font-family: monospace;
+        }
+
+        @media (max-width: 600px) {
+            header, section {
+                width: 95%;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        
+        <header>
+            <h1>[Your Name]</h1>
+            <div class="subtitle">Master's Student in Nano and Opto Electronics</div>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                Stuttgart, Germany | Seeking Working Student Opportunities
+            </p>
+            <div class="contact-links">
+                <a href="mailto:your.email@example.com">Email</a> |
+                <a href="https://github.com/yourusername" target="_blank">GitHub</a> |
+                <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+            </div>
+        </header>
+
+        <section id="about">
+            <h2>⚙️ Profile & Education</h2>
+            <div class="project">
+                <h3>University of Stuttgart</h3>
+                <div class="project-meta">Master of Science | Nano and Opto Electronics</div>
+                <p>Focusing on advanced electronics, semiconductor technologies, and embedded hardware architectures. Actively exploring the intersection of low-level hardware control and complex physical systems.</p>
+            </div>
+            <div class="project">
+                <h3>[Previous University Name]</h3>
+                <div class="project-meta">Bachelor of Science | [Your Major]</div>
+                <p>Completed foundational studies in engineering and electronics. Developed a strong analytical background and practical problem-solving skills.</p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>⚡ Hardware & Firmware Stack</h2>
+            <div class="skills-grid">
+                <div class="skill-chip">Embedded Systems</div>
+                <div class="skill-chip">Microprocessors</div>
+                <div class="skill-chip">Semiconductor Fab</div>
+                <div class="skill-chip">Embedded C</div>
+                <div class="skill-chip">Lithography</div>
+                <div class="skill-chip">VHDL / Verilog</div>
+                <div class="skill-chip">PCB Design</div>
+                <div class="skill-chip">Assembly</div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>🔬 Projects & Experience</h2>
+            
+            <div class="project">
+                <h3>Embedded Systems Development (Academic/Personal)</h3>
+                <div class="project-meta">Microcontroller Programming & Architecture</div>
+                <p>Designed and implemented bare-metal firmwares. Analyzed microprocessor architectures and instruction sets to optimize processing efficiency for hardware-level tasks.</p>
+            </div>
+
+            <div class="project">
+                <h3>Community Education Initiative</h3>
+                <div class="project-meta">Volunteer | Civic Engagement</div>
+                <p>Led educational outreach programs for school children, focusing on food habits, hygiene, and wellness. Collaborated with parents to emphasize the importance of ongoing education and community health.</p>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
