@@ -3,53 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Portfolio | Electronics & Embedded Systems</title>
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px auto; max-width: 800px; padding: 0 20px; }
-        h1, h2, h3 { color: #333; }
-        a { color: #0366d6; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .project { border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
-    </style>
-</head>
-<body>
+        /* CSS Variables for a "Silicon & Solder" Dark Theme */
+        :root {
+            --bg-base: #0a0a0c;
+            --bg-surface: #15161a;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --accent-glow: #00ffcc; /* Neon cyan/green trace color */
+            --trace-color: #334155;
+        }
 
-    <header>
-        <h1>HAMEED MAHAMMAD</h1>
-        <p><strong>Master's Student in Nano and Opto Electronics | University of Stuttgart</strong></p>
-        <p>Seeking working student opportunities in embedded systems, microprocessors, and semiconductor technology.</p>
-        <p>
-            <a href="mailto:mdhameed78298@gmail.com">Email Me</a> | 
-            <a href="https://github.com/HameedMahammad">GitHub</a> | 
-            <a href="Hameed_CV.pdf">Download CV</a>
-        </p>
-    </header>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
 
-    <hr>
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            line-height: 1.6;
+            background-image: 
+                linear-gradient(var(--trace-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--trace-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: -1px -1px;
+        }
 
-    <section>
-        <h2>Technical Projects</h2>
-        
-        <div class="project">
-            <h3>Microprocessor Architecture Exploration</h3>
-            <p><strong>Tools:</strong> Verilog, VHDL</p>
-            <p>A brief description of the system architecture you designed or tested, including instruction sets and block diagrams.</p>
-            <a href="link-to-specific-github-repo">View Project on GitHub &rarr;</a>
-        </div>
+        /* Overlay to fade out the grid slightly */
+        .overlay {
+            background: radial-gradient(circle at center, transparent 0%, var(--bg-base) 80%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-        <div class="project">
-            <h3>Embedded C Sensor Integration</h3>
-            <p><strong>Tools:</strong> Embedded C, Microcontrollers</p>
-            <p>A description of the drivers developed and how the sensors were integrated into the broader embedded system.</p>
-            <a href="link-to-specific-github-repo">View Project on GitHub &rarr;</a>
-        </div>
-    </section>
+        header, section {
+            width: 100%;
+            max-width: 900px;
+            padding: 2rem;
+            margin: 1rem auto;
+            background-color: rgba(21, 22, 26, 0.95);
+            border: 1px solid var(--trace-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+        }
 
-    <hr>
+        header {
+            text-align: center;
+            border-top: 4px solid var(--accent-glow);
+        }
 
-    <footer>
-        <p>Connect with me to discuss embedded systems, electronics, or working student opportunities!</p>
-    </footer>
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
 
-</body>
-</html>
+        h2 {
+            font-size: 1.5rem;
+            color: var(--accent-glow);
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--trace-color);
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .subtitle {
+            color: var(--accent-glow);
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent-glow
