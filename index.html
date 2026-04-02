@@ -7,14 +7,14 @@
     <style>
         /* CSS STYLES */
         :root {
-            --bg-color: #f4f4f5; /* Light gray background */
-            --text-color: #27272a; /* Dark gray text */
-            --accent-color: #a1a1aa; /* Medium gray */
+            --bg-color: #f4f4f5; 
+            --text-color: #27272a; 
+            --accent-color: #a1a1aa; 
             --dark-bg: #3f3f46;
         }
 
         html {
-            scroll-behavior: smooth; /* Enables the smooth scrolling */
+            scroll-behavior: smooth; 
         }
 
         body {
@@ -27,35 +27,48 @@
 
         /* Hero Section */
         .hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    /* Add your image path to the url() below */
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('profile_pic.jpeg') no-repeat center center/cover;
-    color: white; /* Makes the main heading white */
-}
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* UPDATED PATH: bg_pic.jpeg */
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('bg_pic.jpeg') no-repeat center center/cover;
+            color: white; 
+            position: relative; 
+        }
+
+        @keyframes loadFadeUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
 
         .hero h1 {
             font-size: 3rem;
             margin: 0;
+            margin-top: 40vh; 
+            opacity: 0; 
+            animation: loadFadeUp 1s ease-out forwards; 
         }
 
-       .hero p {
-    font-size: 1.2rem;
-    color: #e4e4e7; /* Light gray text for the description */
-    max-width: 600px;
-}
+        .hero p {
+            font-size: 1.2rem;
+            color: #e4e4e7; 
+            max-width: 600px;
+            opacity: 0; 
+            animation: loadFadeUp 1s ease-out 0.5s forwards; 
+        }
 
-       .scroll-down {
-    margin-top: 40px;
-    font-size: 1.5rem;
-    color: white;
-    text-decoration: none;
-    animation: bounce 2s infinite;
-}
+        .scroll-down {
+            position: absolute; 
+            bottom: 10px;       
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+            opacity: 0; 
+            animation: loadFadeUp 1s ease-out 1s forwards, bounce 2s infinite 1.5s; 
+        }
 
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
@@ -63,7 +76,7 @@
             60% { transform: translateY(-10px); }
         }
 
-        /* Sticky Navigation Menu */
+        /* Navigation */
         nav {
             position: sticky;
             top: 0;
@@ -77,7 +90,7 @@
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 20px;
+            margin: 0 15px;
             font-weight: bold;
             font-size: 1.1rem;
             transition: color 0.3s;
@@ -87,7 +100,7 @@
             color: #d4d4d8;
         }
 
-        /* Sections */
+        /* General Sections */
         section {
             min-height: 100vh;
             padding: 80px 10%;
@@ -95,6 +108,13 @@
             flex-direction: column;
             justify-content: center;
             border-bottom: 1px solid #d4d4d8;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            width: 100%;
         }
 
         .section-content {
@@ -118,12 +138,64 @@
             flex: 1;
         }
 
+        #about .section-img {
+            width: 300px;
+            height: 300px;
+            flex: none; 
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center; 
+            border: 5px solid white;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer; 
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px); 
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-info h3 {
+            margin-top: 0;
+            color: var(--dark-bg);
+        }
+
         .btn {
             display: inline-block;
-            margin-top: 20px;
+            margin-top: auto; 
             padding: 10px 20px;
             background-color: var(--dark-bg);
             color: white;
+            text-align: center;
             text-decoration: none;
             border-radius: 5px;
             border: none;
@@ -132,16 +204,32 @@
             transition: background 0.3s;
         }
 
-        .btn:hover {
-            background-color: #27272a;
+        .btn:hover { background-color: #27272a; }
+
+        /* Skills */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
         }
 
-        /* Contact Form */
+        .skill-tag {
+            background-color: var(--dark-bg);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* Forms */
         form {
             display: flex;
             flex-direction: column;
             max-width: 500px;
             margin: 0 auto;
+            width: 100%;
         }
 
         input, textarea {
@@ -150,20 +238,16 @@
             border: 1px solid var(--accent-color);
             border-radius: 5px;
             font-size: 1rem;
-            background-color: white;
         }
 
-        textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
+        textarea { resize: vertical; min-height: 150px; }
 
-        /* Popup Modal */
+        /* --- MODALS & FLIP ANIMATION --- */
         .modal {
             display: none; 
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.6);
+            background-color: rgba(0,0,0,0.7);
             z-index: 2000;
             justify-content: center;
             align-items: center;
@@ -174,55 +258,90 @@
             padding: 40px;
             border-radius: 8px;
             text-align: center;
-            max-width: 400px;
+            max-width: 900px; /* <-- CHANGE THIS (e.g., 800px) */
+            width: 90%;
+            position: relative; 
+            max-height: 80vh;
+            min-height: 70vh; /* Forces the box to always fill 70% of the screen height */
+            overflow-y: auto;
         }
 
-        .modal h2 {
-            margin-top: 0;
-            color: var(--dark-bg);
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #a1a1aa;
+            cursor: pointer;
+            transition: color 0.2s;
         }
-        /* --- MOBILE RESPONSIVE STYLES --- */
+
+        .close-btn:hover { color: #27272a; }
+
+       /* --- UPGRADED SMOOTH FLIP ANIMATION --- */
+        /* --- UPGRADED SMOOTH FLIP ANIMATION --- */
+       @keyframes flipIn {
+            0% { 
+                /* Moved the perspective back to 3000px to stop the bulging/shrinking */
+                transform: perspective(3000px) rotateY(-90deg); 
+                opacity: 0; 
+            }
+            100% { 
+                transform: perspective(3000px) rotateY(0); 
+                opacity: 1; 
+            }
+        }
+
+        .flip-animation {
+            /* 0.7s duration with a buttery-smooth custom deceleration curve */
+            animation: flipIn 1.2s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+            transform-style: preserve-3d;
+            will-change: transform, opacity; /* Forces mobile hardware acceleration */
+        }
+
+        /* --- SEQUENTIAL POP-UP ITEMS ANIMATION --- */
+        @keyframes itemFadeUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 1. Hide the items initially so they don't jump during the 3D flip */
+        #pm-img, #pm-title, #pm-desc {
+            opacity: 0; 
+        }
+
+        /* 2. Trigger them one-by-one right as the flip is finishing */
+        .flip-animation #pm-img {
+            /* Image slides up first (at 0.3 seconds) */
+            animation: itemFadeUp 0.6s ease-out 0.3s forwards;
+        }
+        
+        .flip-animation #pm-title {
+            /* Title slides up second (at 0.45 seconds) */
+            animation: itemFadeUp 0.6s ease-out 0.45s forwards;
+        }
+        
+        .flip-animation #pm-desc {
+            /* Description text slides up last (at 0.6 seconds) */
+            animation: itemFadeUp 0.6s ease-out 0.6s forwards;
+        }
+
+        /* Scroll Animations */
+        .hidden-scroll { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+        .hidden-left { opacity: 0; transform: translateX(-50px); transition: all 0.8s ease-out; }
+        .hidden-right { opacity: 0; transform: translateX(50px); transition: all 0.8s ease-out; }
+        .show-scroll { opacity: 1; transform: translate(0, 0); }
+
         @media (max-width: 768px) {
-            /* 1. Shrink Hero text so it fits */
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-                padding: 0 20px;
-            }
-
-            /* 2. Allow Navigation links to wrap to the next line */
-            nav {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                padding: 10px;
-            }
-            
-            nav a {
-                margin: 5px 10px;
-                font-size: 0.9rem;
-            }
-
-            /* 3. Stack the image and text vertically */
-            .section-content, 
-            .section-content.reverse {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            /* 4. Reduce section padding for small screens */
-            section {
-                padding: 60px 5%; 
-            }
-
-            /* 5. Make images take up the full width of the phone */
-            .section-img {
-                max-width: 100%; 
-                margin-bottom: 20px;
-            }
+            .hero h1 { font-size: 2.2rem; margin-top: 10vh; }
+            .hero p { font-size: 1rem; padding: 0 20px; }
+            nav { display: flex; flex-wrap: wrap; justify-content: center; padding: 10px; }
+            nav a { margin: 5px 10px; font-size: 0.9rem; }
+            .section-content, .section-content.reverse { flex-direction: column; text-align: center; }
+            section { padding: 60px 5%; }
+            .section-img { max-width: 100%; margin-bottom: 20px; }
+            .projects-grid { grid-template-columns: 1fr; } 
         }
     </style>
 </head>
@@ -235,73 +354,138 @@
     </header>
 
     <nav id="menu">
-        <a href="#option1">Embedded Systems</a>
-        <a href="#option2">Microprocessors</a>
-        <a href="#option3">Semiconductor Fab</a>
-        <a href="#option4">Optoelectronics</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#work">Work Experience</a>
+        <a href="#skills">Skills</a>
         <a href="#about">About Me</a>
         <a href="#contact">Contact</a>
     </nav>
 
-    <section id="option1">
+    <section id="projects" style="background-color: #e4e4e7;">
+        <h2 class="section-title hidden-scroll">My Projects</h2>
+        
+        <div class="projects-grid">
+            
+            <div class="project-card hidden-scroll" onclick="openProjectModal(this)">
+                <img src="https://via.placeholder.com/500x300/a1a1aa/ffffff?text=Embedded+Systems" alt="Project 1">
+                <div class="project-info">
+                    <h3>Embedded Systems Architecture</h3>
+                    <p>An exploration of microcontroller-based systems, focusing on hardware-software integration.</p>
+                    
+                    <div class="project-details" style="display: none;">
+                        <p><strong>Technologies used:</strong> Embedded C, ARM Cortex-M, Sensors</p>
+                        <p>In this project, I developed a real-time embedded system capable of processing sensor data with microsecond accuracy. The main challenge was optimizing the memory usage to fit within the strict limitations of the microcontroller.</p>
+                    </div>
+
+                    <a href="dummy-file.pdf" download="Project1.pdf" class="btn" onclick="event.stopPropagation()">Download Specs</a>
+                </div>
+            </div>
+
+            <div class="project-card hidden-scroll" onclick="openProjectModal(this)">
+                <img src="https://via.placeholder.com/500x300/a1a1aa/ffffff?text=Microprocessors" alt="Project 2">
+                <div class="project-info">
+                    <h3>Microprocessor Analysis</h3>
+                    <p>Detailed evaluation of instruction sets and core architectures.</p>
+                    
+                    <div class="project-details" style="display: none;">
+                        <p><strong>Technologies used:</strong> Assembly, Logic Analyzers, VHDL</p>
+                        <p>This research involved a deep dive into modern processor architecture. I simulated various pipeline stages to identify bottlenecks and proposed structural optimizations to reduce power consumption by 15% without sacrificing speed.</p>
+                    </div>
+
+                    <a href="dummy-file.pdf" download="Project2.pdf" class="btn" onclick="event.stopPropagation()">Download Report</a>
+                </div>
+            </div>
+
+            <div class="project-card hidden-scroll" onclick="openProjectModal(this)">
+                <img src="https://via.placeholder.com/500x300/a1a1aa/ffffff?text=Fabrication" alt="Project 3">
+                <div class="project-info">
+                    <h3>Semiconductor Fabrication</h3>
+                    <p>Research on advanced lithography techniques and transistor fabrication.</p>
+                    
+                    <div class="project-details" style="display: none;">
+                        <p><strong>Focus Areas:</strong> Photolithography, Etching, Cleanroom protocols</p>
+                        <p>Conducted extensive hands-on laboratory work detailing the step-by-step process of creating semiconductor wafers. I specifically analyzed the impact of varying UV exposure times on the final transistor gate width.</p>
+                    </div>
+
+                    <a href="dummy-file.pdf" download="Project3.pdf" class="btn" onclick="event.stopPropagation()">Download Data</a>
+                </div>
+            </div>
+
+            <div class="project-card hidden-scroll" onclick="openProjectModal(this)">
+                <img src="https://via.placeholder.com/500x300/a1a1aa/ffffff?text=Optoelectronics" alt="Project 4">
+                <div class="project-info">
+                    <h3>Optoelectronic Devices</h3>
+                    <p>Designing and testing light-emitting and light-detecting devices.</p>
+                    
+                    <div class="project-details" style="display: none;">
+                        <p><strong>Focus Areas:</strong> Photonics, LED structures, Quantum efficiency</p>
+                        <p>This project bridged the gap between optical physics and electronic engineering. I designed a custom LED structure and measured its quantum efficiency, exploring ways to minimize heat loss during photon generation.</p>
+                    </div>
+
+                    <a href="dummy-file.pdf" download="Project4.pdf" class="btn" onclick="event.stopPropagation()">Download Specs</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="education">
         <div class="section-content">
-            <img class="section-img" src="https://via.placeholder.com/500x300/d4d4d8/3f3f46?text=Embedded+Systems+Project" alt="Project 1">
-            <div class="section-text">
-                <h2>Embedded Systems Architecture</h2>
-                <p>An exploration of microcontroller-based systems, focusing on hardware-software integration, sensor interfacing, and real-time processing capabilities for industrial applications.</p>
-                <a href="dummy-file.pdf" download="Embedded_Systems_Project.pdf" class="btn">Download Project Files</a>
+            <img class="section-img hidden-left" src="https://via.placeholder.com/500x300/d4d4d8/3f3f46?text=University+of+Stuttgart" alt="Education">
+            <div class="section-text hidden-right">
+                <h2 style="font-size: 2rem;">Education</h2>
+                <h3>M.Sc. in Nano and Opto Electronics</h3>
+                <p><strong>University of Stuttgart, Germany</strong> | Present</p>
+                <p>Currently pursuing advanced studies in modern electronic technologies, focusing on cutting-edge hardware design, semiconductor physics, and optical engineering.</p>
             </div>
         </div>
     </section>
 
-    <section id="option2" style="background-color: #e4e4e7;">
+    <section id="work" style="background-color: #e4e4e7;">
         <div class="section-content reverse">
-            <img class="section-img" src="https://via.placeholder.com/500x300/a1a1aa/ffffff?text=Microprocessor+Design" alt="Project 2">
-            <div class="section-text">
-                <h2>Microprocessor Analysis</h2>
-                <p>Detailed evaluation of instruction sets and core architectures, optimizing performance and power consumption for next-generation computing devices.</p>
-                <a href="dummy-file.pdf" download="Microprocessor_Analysis.pdf" class="btn">Download Report</a>
+            <img class="section-img hidden-right" src="https://via.placeholder.com/500x300/a1a1aa/ffffff?text=Work+Experience" alt="Work">
+            <div class="section-text hidden-left">
+                <h2 style="font-size: 2rem;">Work Experience</h2>
+                <h3>Working Student / Engineering Intern</h3>
+                <p><strong>Actively Seeking Roles in Germany</strong></p>
+                <p>Looking to apply my theoretical academic background to practical, real-world engineering challenges. I am highly adaptable and ready to contribute to hardware innovation.</p>
             </div>
         </div>
     </section>
 
-    <section id="option3">
+    <section id="skills">
         <div class="section-content">
-            <img class="section-img" src="https://via.placeholder.com/500x300/d4d4d8/3f3f46?text=Semiconductor+Fabrication" alt="Project 3">
-            <div class="section-text">
-                <h2>Semiconductor Fabrication</h2>
-                <p>Research on advanced lithography techniques and transistor fabrication processes, pushing the boundaries of miniaturization in modern electronics.</p>
-                <a href="dummy-file.pdf" download="Fabrication_Research.pdf" class="btn">Download Data Sheet</a>
+            <div class="section-text hidden-scroll">
+                <h2 style="text-align: center; font-size: 2rem;">Technical Skills</h2>
+                <div class="skills-container" style="justify-content: center;">
+                    <span class="skill-tag">Embedded Systems</span>
+                    <span class="skill-tag">Microprocessors</span>
+                    <span class="skill-tag">Semiconductor Fab</span>
+                    <span class="skill-tag">Optoelectronics</span>
+                    <span class="skill-tag">Hardware Architecture</span>
+                    <span class="skill-tag">Sensor Interfacing</span>
+                    <span class="skill-tag">Lithography</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="option4" style="background-color: #e4e4e7;">
-        <div class="section-content reverse">
-            <img class="section-img" src="https://via.placeholder.com/500x300/a1a1aa/ffffff?text=Optoelectronics" alt="Project 4">
-            <div class="section-text">
-                <h2>Optoelectronic Devices</h2>
-                <p>Designing and testing light-emitting and light-detecting devices, bridging the gap between optical physics and electronic engineering.</p>
-                <a href="dummy-file.pdf" download="Opto_Specs.pdf" class="btn">Download Specifications</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="about">
+    <section id="about" style="background-color: #e4e4e7;">
         <div class="section-content">
-            <img class="section-img" src="https://via.placeholder.com/400x500/52525b/ffffff?text=My+Portrait" alt="About Me Photo">
-            <div class="section-text">
+            <img class="section-img hidden-left" src="profile_pic.jpeg" alt="About Me Photo">
+            <div class="section-text hidden-right">
                 <h2>About Me</h2>
-                <p>I am currently pursuing a Master's degree in Nano and Opto Electronics at the University of Stuttgart. My academic journey is driven by a deep fascination with the fundamental building blocks of modern technology.</p>
-                <p>I am actively seeking working student opportunities in Germany to apply my theoretical knowledge to real-world engineering challenges. I thrive in environments where hardware innovation meets practical application.</p>
+                <p>I am a driven engineering student with a deep fascination for the fundamental building blocks of modern technology. I thrive in environments where theoretical physics meets practical application.</p>
+                <p>Alongside my academic pursuits, I am passionate about community service and educating others on the importance of science and hygiene.</p>
                 <a href="your-cv.pdf" download="My_CV.pdf" class="btn">Download My CV</a>
             </div>
         </div>
     </section>
 
-    <section id="contact" style="background-color: #e4e4e7;">
-        <h2 style="text-align: center; margin-bottom: 30px;">Get In Touch</h2>
-        <form id="contactForm" action="https://formspree.io/f/YOUR_ENDPOINT_HERE" method="POST">
+    <section id="contact">
+        <h2 class="hidden-scroll" style="text-align: center; margin-bottom: 30px;">Get In Touch</h2>
+        <form id="contactForm" class="hidden-scroll" action="https://formspree.io/f/YOUR_ENDPOINT_HERE" method="POST">
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="email" name="email" placeholder="Your Email" required>
             <textarea name="message" placeholder="Your Message" required></textarea>
@@ -309,36 +493,40 @@
         </form>
     </section>
 
+    <div id="projectModal" class="modal" onclick="closeProjectModal(event)">
+        <div class="modal-content" id="projectModalContent">
+            <span class="close-btn" onclick="closeProjectModal('force')">&times;</span>
+           <img id="pm-img" src="" alt="Project Image" style="width: 100%; height: 300px; object-fit: cover; border-radius: 4px; margin-bottom: 20px;">
+            <h2 id="pm-title" style="margin-top: 0; color: #3f3f46;">Title</h2>
+            <div id="pm-desc" style="text-align: left; color: #52525b;">
+                </div>
+        </div>
+    </div>
+
     <div id="thankYouModal" class="modal">
         <div class="modal-content">
             <h2>Thank You!</h2>
             <p>Your message has been sent successfully. I will get back to you soon.</p>
-            <button class="btn" onclick="closeModal()">Close</button>
+            <button class="btn" onclick="closeContactModal()">Close</button>
         </div>
     </div>
 
     <script>
+        // --- CONTACT FORM LOGIC ---
         const form = document.getElementById('contactForm');
-        const modal = document.getElementById('thankYouModal');
+        const contactModal = document.getElementById('thankYouModal');
 
         form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevents the default page refresh
-            
-            // Collect form data
+            event.preventDefault(); 
             const formData = new FormData(form);
 
-            // Send data to Formspree using Fetch API
             fetch(form.action, {
                 method: 'POST',
                 body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
+                headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
-                    // Show the popup modal
-                    modal.style.display = 'flex';
-                    // Clear the form fields
+                    contactModal.style.display = 'flex';
                     form.reset();
                 } else {
                     alert("Oops! There was a problem submitting your form. Did you add your Formspree endpoint?");
@@ -348,17 +536,50 @@
             });
         });
 
-        // Function to close the modal
-        function closeModal() {
-            modal.style.display = 'none';
+        function closeContactModal() {
+            contactModal.style.display = 'none';
         }
 
-        // Close modal if user clicks outside of the white box
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                closeModal();
+        // --- PROJECT FLIP MODAL LOGIC ---
+        const projectModal = document.getElementById('projectModal');
+        const pmContent = document.getElementById('projectModalContent');
+        const pmImg = document.getElementById('pm-img');
+        const pmTitle = document.getElementById('pm-title');
+        const pmDesc = document.getElementById('pm-desc');
+
+        function openProjectModal(cardElement) {
+            const imageSrc = cardElement.querySelector('img').src;
+            const title = cardElement.querySelector('h3').innerText;
+            const detailsHTML = cardElement.querySelector('.project-details').innerHTML;
+
+            pmImg.src = imageSrc;
+            pmTitle.innerText = title;
+            pmDesc.innerHTML = detailsHTML;
+
+            projectModal.style.display = 'flex';
+            
+            pmContent.classList.remove('flip-animation');
+            void pmContent.offsetWidth; 
+            pmContent.classList.add('flip-animation');
+        }
+
+        function closeProjectModal(eventOrForce) {
+            if (eventOrForce === 'force' || event.target === projectModal) {
+                projectModal.style.display = 'none';
             }
         }
+
+        // --- SCROLL REVEAL LOGIC ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show-scroll');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        const hiddenElements = document.querySelectorAll('.hidden-scroll, .hidden-left, .hidden-right');
+        hiddenElements.forEach((el) => observer.observe(el));
     </script>
 
 </body>
