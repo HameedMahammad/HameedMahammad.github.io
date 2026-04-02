@@ -181,6 +181,49 @@
             margin-top: 0;
             color: var(--dark-bg);
         }
+        /* --- MOBILE RESPONSIVE STYLES --- */
+        @media (max-width: 768px) {
+            /* 1. Shrink Hero text so it fits */
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                padding: 0 20px;
+            }
+
+            /* 2. Allow Navigation links to wrap to the next line */
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 10px;
+            }
+            
+            nav a {
+                margin: 5px 10px;
+                font-size: 0.9rem;
+            }
+
+            /* 3. Stack the image and text vertically */
+            .section-content, 
+            .section-content.reverse {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            /* 4. Reduce section padding for small screens */
+            section {
+                padding: 60px 5%; 
+            }
+
+            /* 5. Make images take up the full width of the phone */
+            .section-img {
+                max-width: 100%; 
+                margin-bottom: 20px;
+            }
+        }
     </style>
 </head>
 <body>
